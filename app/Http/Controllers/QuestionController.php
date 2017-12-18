@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use App\Tag;
 class QuestionController extends Controller
 {
     /**
@@ -23,7 +24,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('questions.create');
+        $tags = Tag::all();
+        return view('questions.create')->with('tags',$tags);
     }
 
     /**

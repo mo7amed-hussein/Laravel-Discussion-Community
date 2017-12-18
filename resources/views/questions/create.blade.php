@@ -1,5 +1,9 @@
 @extends('layout.main')
 @section('title',' | Create Question')
+@section('additional-styles')
+<link rel="stylesheet" type="text/css" href="{{url('css/select2.min.css')}}">
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-8">
@@ -26,8 +30,13 @@
 
        	<div class="form-group">
        		<label>Tag</label>
-       		<input type="text" name="tags[]" class="form-control">
-       	</div></div>
+          <select name="tags[]" multiple="multiple" class="form-control tags-selector">
+            @foreach($tags as $tag)
+            <option value="{{$tag->id}}">{{$tag->name}}</option>
+            @endforeach
+          </select>
+       	</div>
+       </div>
        	<div class="panel-footer">
        	
        	<input type="submit" name="submit" value="submit" class="btn btn-success btn-block">
@@ -76,4 +85,11 @@
 
     </div>
 </div>
+@endsection
+
+@section('additional-scripts')
+<script src="{{url('js/select2.min.js')}}"></script>
+<script type="text/javascript">
+  $(".tags-selector").select2();
+</script>
 @endsection
