@@ -56,7 +56,7 @@
        <div class="comment-sidebar">
               <div class="question-lg-info">
                      <img src="{{url('avatar/'.$quest->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">{{$quest->user->name}} |{{date('M j ,Y',strtotime($quest->created_at))}}</small>
+                     <small class="text-muted">{{$quest->user->name}} |{{$quest->created_at->diffForHumans()}}</small>
                 </div>
                 <p class="comment-sidebar-content"> <a href="{{route('questions.show',$quest->id)}}" class="text text-primary">{{str_limit($quest->title,50)}}</a> </p>
         </div>

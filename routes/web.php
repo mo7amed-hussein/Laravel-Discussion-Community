@@ -13,7 +13,7 @@
 
 
 Route::get('/', 'HomeController@getIndex')->name('home');
-
+Route::get('/popular', 'HomeController@getPopular')->name('home.popular');
 Route::resource('questions','QuestionController');
 Route::resource('profile','ProfileController');
 Auth::routes();

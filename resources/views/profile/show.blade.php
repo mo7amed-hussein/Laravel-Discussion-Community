@@ -13,7 +13,7 @@
 		<p>Egypt</p>
 		<p>{{$user->email}}</p>
 		<p>join : {{date('M j,Y',strtotime($user->created_at))}}</p>
-		<p>last : {{date('M j,Y',strtotime($user->updated_at))}}</p>
+		<p>last : {{$user->updated_at->diffForHumans()}}</p>
 		</div>
 		</div>
 	</div>

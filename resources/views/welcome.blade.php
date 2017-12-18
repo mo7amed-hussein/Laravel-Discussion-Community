@@ -5,9 +5,9 @@
     <div class="col-md-8">
         <div class="row">
             <ul class="nav nav-pills">
-                <li class="active"><a href="">Recent</a></li>
-                <li><a href="">Popular</a></li>
-                <li><a href="">Intersted</a></li>
+                <li class="{{ Request::is('/')?'active':''}}"><a href="{{route('home')}}">Recent</a></li>
+                <li class="{{ Request::is('popular')?'active':''}}"><a href="{{route('home.popular')}}">Popular</a></li>
+                <li class="{{ Request::is('intersted')?'active':''}}"><a href="">Intersted</a></li>
             </ul>
             <hr>
         </div>
@@ -17,7 +17,7 @@
                 <p class="title-lg"> <a href="{{route('questions.show',$quest->id)}}" class="text text-primary">{{$quest->title}}</a> </p>
                 <div class="question-lg-info">
                      <img src="{{url('avatar/'.$quest->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">{{$quest->user->name}} | asked 33 min ago |3 answers |20 views</small>
+                     <small class="text-muted">{{$quest->user->name}} | asked {{$quest->created_at->diffForHumans()}} |3 answers |{{$quest->views}} views</small>
                 </div>
                 <p class="question-tags-lg">
                     @foreach($quest->tags as $tag)

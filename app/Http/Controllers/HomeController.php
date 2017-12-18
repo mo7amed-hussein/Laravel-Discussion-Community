@@ -13,4 +13,10 @@ class HomeController extends Controller
     	$questions = Question::orderBy('created_at','desc')->paginate(3);
     	return view('welcome')->with('questions',$questions);
     }
+
+    public function getPopular()
+    {
+    	$questions = Question::orderBy('views','desc')->paginate(3);
+    	return view('welcome')->with('questions',$questions);
+    }
 }
