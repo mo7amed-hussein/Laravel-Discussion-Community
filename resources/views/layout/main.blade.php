@@ -9,8 +9,9 @@
 	<div class="container">
 		@include('layout.partials._devInfo')
 		@yield('content')
-		@include('layout.partials._footer')
-	</div>   
+		
+	</div>
+	@include('layout.partials._footer')   
 </body>
 	<script src="{{url('js/jquery-3.2.1.min.js')}}"></script>
 	<script src="{{url('js/bootstrap.js')}}"></script>
