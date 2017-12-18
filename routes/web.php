@@ -13,7 +13,7 @@
 
 
 Route::get('/', function () {
-    return view('profile.show');
+    return view('welcome');
 })->name('home');
 
 Route::resource('questions','QuestionController');

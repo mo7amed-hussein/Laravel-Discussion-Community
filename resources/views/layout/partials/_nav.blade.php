@@ -30,7 +30,7 @@
                         
                        
                          <li><a href="{{route('questions.create')}}">Ask</a></li>
-
+                         @if(Auth::check())
                          <li><a href="#">test</a></li>
 
                             <li class="dropdown">
@@ -52,7 +52,10 @@
                                     </li>
                                 </ul>
                             </li>
-                        
+                        @else
+                        <li><a href="{{route('register')}}">Register</a></li>
+                        <li><a href="{{route('login')}}">Login</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
