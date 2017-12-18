@@ -65,6 +65,9 @@ class QuestionController extends Controller
     public function show($id)
     {
         //
+        $question = Question::find($id);
+        $recentQuestions = Question::orderBy('created_at','desc')->take(10)->get();
+        return view('questions.show')->with('question',$question)->with('recentQuestions',$recentQuestions);
     }
 
     /**
