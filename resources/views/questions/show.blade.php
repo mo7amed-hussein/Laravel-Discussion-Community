@@ -52,10 +52,10 @@
        @foreach($recentQuestions as $quest)
        <div class="comment-sidebar">
               <div class="question-lg-info">
-                     <img src="{{url('img/avatar.jpg')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">Mohamed Hussein |{{date('M j ,Y',strtotime($quest->created_at))}}</small>
+                     <img src="{{url('avatar/'.$quest->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
+                     <small class="text-muted">{{$quest->user->name}} |{{date('M j ,Y',strtotime($quest->created_at))}}</small>
                 </div>
-                <p class="comment-sidebar-content"> <a href="{{route('questions.show',$quest->id)}}" class="text text-primary">{{str_limit($quest->title,20)}}</a> </p>
+                <p class="comment-sidebar-content"> <a href="{{route('questions.show',$quest->id)}}" class="text text-primary">{{str_limit($quest->title,50)}}</a> </p>
         </div>
 
         @endforeach
