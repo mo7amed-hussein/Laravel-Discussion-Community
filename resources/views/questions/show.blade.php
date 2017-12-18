@@ -7,8 +7,8 @@
     <div class="question-block back-primary bottom-space-md">
                 <p class="title-block"><h3>{{$question->title}}</h3></p>
                 <div class="question-block-info">
-                     <img src="{{url('img/avatar.jpg')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">Mohamed Hussein | asked {{$question->created_at->diffForHumans()}} |3 answers |{{$question->views}} views</small>
+                     <img src="{{url('avatar/'.$question->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
+                     <small class="text-muted">{{$question->user->name}} | asked {{$question->created_at->diffForHumans()}} |3 answers |{{$question->views}} views</small>
                      <hr>
                 </div>
                 <div class="question-body">

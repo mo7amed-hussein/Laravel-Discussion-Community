@@ -21,60 +21,27 @@
 	<div class="col-md-9">
 		<div class="row">
 			<ul class="nav nav-pills">
-				<li class="active"><a href="">Questions</a></li>
-				<li ><a href="">Comments</a></li>
-				<li ><a href="">Favorites</a></li>
+				<li class="{{ Request::is('profile/'.$user->id)?'active':''}}"><a href="{{route('profile.show',$user->id)}}">Questions <span class="badge">{{$user->questions->count()}}</span></a></li>
+				<li class="{{ Request::is('comments')?'active':''}}"><a href="">Comments</a></li>
+				<li class="{{ Request::is('fav')?'active':''}}"><a href="">Favorites</a></li>
 			</ul>
 			<hr>
 		</div>
 		<div class="row">
-			<div class="question-lg">
-                <p class="title-lg"> <a href="" class="text text-primary">what is the main difference between qt and qml</a> </p>
-                <div class="question-lg-info">
-                     <small class="text-muted">asked 33 min ago |3 answers |20 views</small>
-                </div>
-                <p class="question-tags-lg">
-                    <a class="label label-default">qt</a>
-                    <a class="label label-default">qml</a>
-                    <a class="label label-default">cpp</a>
-                </p>
-            </div>
-
+            @foreach($questions as $quest)
             <div class="question-lg">
-                <p class="title-lg"> <a href="" class="text text-primary">what is the main difference between qt and qml</a> </p>
+                <p class="title-lg"> <a href="{{route('questions.show',$quest->id)}}" class="text text-primary">{{$quest->title}}</a> </p>
                 <div class="question-lg-info">
-                     <small class="text-muted">asked 33 min ago |3 answers |20 views</small>
+                     <small class="text-muted">asked {{$quest->created_at->diffForHumans()}} |3 answers |{{$quest->views}} views</small>
                 </div>
                 <p class="question-tags-lg">
-                    <a class="label label-default">qt</a>
-                    <a class="label label-default">qml</a>
-                    <a class="label label-default">cpp</a>
+                    @foreach($quest->tags as $tag)
+                  <a class="label label-default">{{$tag->name}}</a>
+                  @endforeach
                 </p>
             </div>
-
-            <div class="question-lg">
-                <p class="title-lg"> <a href="" class="text text-primary">what is the main difference between qt and qml</a> </p>
-                <div class="question-lg-info">
-                     <small class="text-muted">asked 33 min ago |3 answers |20 views</small>
-                </div>
-                <p class="question-tags-lg">
-                    <a class="label label-default">qt</a>
-                    <a class="label label-default">qml</a>
-                    <a class="label label-default">cpp</a>
-                </p>
-            </div>
-
-            <div class="question-lg">
-                <p class="title-lg"> <a href="" class="text text-primary">what is the main difference between qt and qml</a> </p>
-                <div class="question-lg-info">
-                     <small class="text-muted">asked 33 min ago |3 answers |20 views</small>
-                </div>
-                <p class="question-tags-lg">
-                    <a class="label label-default">qt</a>
-                    <a class="label label-default">qml</a>
-                    <a class="label label-default">cpp</a>
-                </p>
-            </div>
+            @endforeach
+            <p class="text-center">{{$questions->links()}}</p>
 		</div>
 	</div>
 </div>

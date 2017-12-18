@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Question;
 class ProfileController extends Controller
 {
     /**
@@ -47,7 +48,8 @@ class ProfileController extends Controller
     {
         //
         $user = User::find($id);
-        return view('profile.show')->with('user',$user);
+        $questions = Question::where('user_id',$id)->paginate(5);
+        return view('profile.show')->with('user',$user)->with('questions',$questions);
     }
 
     /**
