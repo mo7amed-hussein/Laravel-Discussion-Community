@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Tag;
 use Session;
+use Illuminate\Support\Facades\Auth;
 class QuestionController extends Controller
 {
     /**
@@ -48,7 +49,7 @@ class QuestionController extends Controller
         $question->title=$request->title;
         $question->body=$request->body;
         $question->slug=$request->slug;
-        $question->user_id=1;
+        $question->user()->associate(Auth::user());
         $question->views=0;
         $question->save();
         //create tags in link table
