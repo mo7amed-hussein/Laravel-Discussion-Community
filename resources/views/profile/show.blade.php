@@ -1,19 +1,19 @@
 @extends('layout.main')
-@section('title',' | question view')
+@section('title',' | $user->name')
 @section('content')
 <div class="row">
 	<div class="col-md-3">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 		<div class="user-info back-primary">
-		<img src="{{url('img/avatar.jpg')}}" style="">
-		<h4>Mohamed Hussein</h4>
-		<p>Stay Hungry stay foolish</p>
+		<img src="{{url('avatar/'.$user->avatar)}}" style="">
+		<h4>{{$user->name}}</h4>
+		<p>{{$user->bio}}</p>
 		<p><a href="">Messages</a></p>
 		<p>Egypt</p>
-		<p>m.hussein@gmail.com</p>
-		<p>join : 12/4/2017</p>
-		<p>last : 11/11/2017</p>
+		<p>{{$user->email}}</p>
+		<p>join : {{date('M j,Y',strtotime($user->created_at))}}</p>
+		<p>last : {{date('M j,Y',strtotime($user->updated_at))}}</p>
 		</div>
 		</div>
 	</div>
