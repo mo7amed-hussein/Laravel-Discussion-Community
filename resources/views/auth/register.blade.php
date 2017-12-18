@@ -12,12 +12,24 @@
 				{{csrf_field()}}
 
 				<div class="form-group">
-					<label class="col-md-4 control-label">Name</label>
+					<label class="col-md-4 control-label">Full Name</label>
 					<div class="col-md-6">
 					<input type="text" name="name" class="form-control" value="{{old('name')}}">
 					@if($errors->has('name'))
 					<span class="help-block">
 						<strong>{{$errors->first('name')}}</strong>
+					</span>
+					@endif
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-4 control-label">User Name</label>
+					<div class="col-md-6">
+					<input type="text" name="userName" class="form-control" value="{{old('userName')}}">
+					@if($errors->has('userName'))
+					<span class="help-block">
+						<strong>{{$errors->first('userName')}}</strong>
 					</span>
 					@endif
 					</div>

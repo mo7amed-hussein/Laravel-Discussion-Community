@@ -8,6 +8,7 @@
 		<div class="user-info back-primary">
 		<img src="{{url('avatar/'.$user->avatar)}}" style="">
 		<h4>{{$user->name}}</h4>
+        <small class="help-block">{{ '@'.$user->userName}}</small>
 		<p>{{$user->bio}}</p>
 		<p><a href="">Messages</a></p>
 		<p>Egypt</p>
