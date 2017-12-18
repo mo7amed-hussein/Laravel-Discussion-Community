@@ -26,7 +26,8 @@ class QuestionController extends Controller
     public function create()
     {
         $tags = Tag::all();
-        return view('questions.create')->with('tags',$tags);
+        $recentQuestions = Question::orderBy('created_at','desc')->take(10)->get();
+        return view('questions.create')->with('tags',$tags)->with('recentQuestions',$recentQuestions);
     }
 
     /**
@@ -79,6 +80,10 @@ class QuestionController extends Controller
     public function edit($id)
     {
         //
+        $tags = Tag::all();
+        $question = Question::find($id);
+        $recentQuestions = Question::orderBy('created_at','desc')->take(10)->get();
+        return view('questions.edit')->with('question',$question)->with('recentQuestions',$recentQuestions)->with('tags',$tags);
     }
 
     /**
@@ -90,7 +95,30 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $question = Question::find($id);
+        if($question->slug == $request->slug)
+        {
+            $this->validate($request,[
+            'title'=>'required|max:255',
+              'body'=>'required|min:10']);
+        }
+        else
+        {
+          $this->validate($request,[
+            'title'=>'required|max:255',
+              'body'=>'required|min:10',
+              'slug'=> 'required|alpha_dash |unique:questions| max:255|min:5']);  
+        }
+    
+        $question->title=$request->title;
+        $question->body=$request->body;
+        $question->slug=$request->slug;
+        //$question->user_id=1;
+        $question->save();
+        //create tags in link table
+        $question->tags()->sync($request->tags);
+        Session::flash("success","question updated successfully");
+        return redirect()->route('questions.show',$question->id);
     }
 
     /**
