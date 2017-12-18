@@ -13,7 +13,7 @@
 
                     <!-- Branding Image -->
                    
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{route('home')}}">
                     	 <img src="{{url('img/web V2.png')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
                         {{ config('app.name', 'Lara-Community') }}
                     </a>

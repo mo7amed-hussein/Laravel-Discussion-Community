@@ -13,8 +13,9 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('profile.show');
+})->name('home');
 
 Route::resource('questions','QuestionController');
-
+Route::resource('profile','ProfileController');
+Auth::routes();

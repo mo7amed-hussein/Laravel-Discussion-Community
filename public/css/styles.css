@@ -40,3 +40,17 @@ margin-bottom:15px;
 {
 	padding: 10px
 }
+
+.user-info
+{
+	padding:8px;
+	margin-bottom: 50px;
+}
+.user-info>img
+{
+	width: 200px; 
+	height: 200px;
+	margin: 0 auto; 
+	border-radius: 50%;
+	border: solid 4px white;
+}
