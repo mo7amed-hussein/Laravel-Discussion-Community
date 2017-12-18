@@ -7,7 +7,7 @@
 	margin-bottom: 10px;
 }
 
-.comment-sidebar
+.comment-sidebar 
 {
 	background-color: #f8f8f8;
 	border-color: #e7e7e7;
@@ -15,4 +15,13 @@
 	border-radius: 1%;
 	margin: 0 auto;
 	margin-bottom: 5px;
+}
+
+.question-form
+{
+	background-color: #f8f8f8;
+	border-color: #e7e7e7;
+	padding: 10px;
+	border-radius: 1%;
+	margin-bottom: 50px;
 }

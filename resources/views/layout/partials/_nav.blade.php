@@ -29,7 +29,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         
                        
-                         <li><a href="#">test</a></li>
+                         <li><a href="{{route('questions.create')}}">Ask</a></li>
 
                          <li><a href="#">test</a></li>
 
