@@ -21,7 +21,7 @@
 
         <div class="form-group">
           <label>Content</label>
-          <textarea  name="body" class="form-control" rows="10" required >{{$question->body}}</textarea> 
+          <textarea  name="body" class="form-control" rows="10">{{$question->body}}</textarea> 
         </div>
 
         <div class="form-group">
@@ -68,7 +68,9 @@
 
 @section('additional-scripts')
 <script src="{{url('js/select2.min.js')}}"></script>
+<script src="{{url('js/tinymce.min.js')}}"></script>
 <script type="text/javascript">
+  tinymce.init({selector:'TEXTAREA' ,plugins:'link code lists table colorpicker'});
   $(".tags-selector").select2();
   $(".tags-selector").select2().val({{json_encode($question->tags()->allRelatedIds())}}).trigger('change');
   

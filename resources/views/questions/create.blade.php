@@ -21,7 +21,7 @@
 
        	<div class="form-group">
        		<label>Content</label>
-       		<textarea  name="body" class="form-control" rows="10" required></textarea> 
+       		<textarea  name="body" class="form-control" rows="10"></textarea> 
        	</div>
 
        	<div class="form-group">
@@ -68,7 +68,9 @@
 
 @section('additional-scripts')
 <script src="{{url('js/select2.min.js')}}"></script>
+<script src="{{url('js/tinymce.min.js')}}"></script>
 <script type="text/javascript">
   $(".tags-selector").select2();
+  tinymce.init({selector:'TEXTAREA' ,plugins:'link code lists table colorpicker'});
 </script>
 @endsection
