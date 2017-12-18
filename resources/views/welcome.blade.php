@@ -11,71 +11,23 @@
             </ul>
             <hr>
         </div>
-        <div class="row">
+        <div class="row"> 
+            @foreach($questions as $quest)
             <div class="question-lg">
-                <p class="title-lg"> <a href="" class="text text-primary">what is the main difference between qt and qml</a> </p>
+                <p class="title-lg"> <a href="{{route('questions.show',$quest->id)}}" class="text text-primary">{{$quest->title}}</a> </p>
                 <div class="question-lg-info">
-                     <img src="{{url('img/avatar.jpg')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">Mohamed Hussein | asked 33 min ago |3 answers |20 views</small>
+                     <img src="{{url('avatar/'.$quest->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
+                     <small class="text-muted">{{$quest->user->name}} | asked 33 min ago |3 answers |20 views</small>
                 </div>
                 <p class="question-tags-lg">
-                    <a class="label label-default">qt</a>
-                    <a class="label label-default">qml</a>
-                    <a class="label label-default">cpp</a>
+                    @foreach($quest->tags as $tag)
+                  <a class="label label-default">{{$tag->name}}</a>
+                  @endforeach
                 </p>
             </div>
-
-            <div class="question-lg">
-                <p class="title-lg"> <a href="" class="text text-primary">what is the main difference between qt and qml</a> </p>
-                <div class="question-lg-info">
-                     <img src="{{url('img/avatar.jpg')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">Mohamed Hussein | asked 33 min ago |3 answers |20 views</small>
-                </div>
-                <p class="question-tags-lg">
-                    <a class="label label-default">qt</a>
-                    <a class="label label-default">qml</a>
-                    <a class="label label-default">cpp</a>
-                </p>
-            </div>
-
-
-            <div class="question-lg">
-                <p class="title-lg"> <a href="" class="text text-primary">what is the main difference between qt and qml</a> </p>
-                <div class="question-lg-info">
-                     <img src="{{url('img/avatar.jpg')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">Mohamed Hussein | asked 33 min ago |3 answers |20 views</small>
-                </div>
-                <p class="question-tags-lg">
-                    <a class="label label-default">qt</a>
-                    <a class="label label-default">qml</a>
-                    <a class="label label-default">cpp</a>
-                </p>
-            </div>
-
-            <div class="question-lg">
-                <p class="title-lg"> <a href="" class="text text-primary">what is the main difference between qt and qml</a> </p>
-                <div class="question-lg-info">
-                     <img src="{{url('img/avatar.jpg')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">Mohamed Hussein | asked 33 min ago |3 answers |20 views</small>
-                </div>
-                <p class="question-tags-lg">
-                    <a class="label label-default">qt</a>
-                    <a class="label label-default">qml</a>
-                    <a class="label label-default">cpp</a>
-                </p>
-            </div>
-
-            <div class="question-lg">
-                <p class="title-lg"> <a href="" class="text text-primary">what is the main difference between qt and qml</a> </p>
-                <div class="question-lg-info">
-                     <img src="{{url('img/avatar.jpg')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">Mohamed Hussein | asked 33 min ago |3 answers |20 views</small>
-                </div>
-                <p class="question-tags-lg">
-                    <a class="label label-default">qt</a>
-                    <a class="label label-default">qml</a>
-                    <a class="label label-default">cpp</a>
-                </p>
+            @endforeach
+            <div class="links text-center">
+                {{$questions->links()}}
             </div>
         </div>
         

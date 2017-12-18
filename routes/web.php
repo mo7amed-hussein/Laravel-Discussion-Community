@@ -12,9 +12,7 @@
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', 'HomeController@getIndex')->name('home');
 
 Route::resource('questions','QuestionController');
 Route::resource('profile','ProfileController');
