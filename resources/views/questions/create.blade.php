@@ -13,19 +13,20 @@
     		</div>
     		<div class="panel-body">
        <form action="{{route('questions.store')}}" method="post" >
+        {{csrf_field()}}
        	<div class="form-group">
        		<label>Title</label>
-       		<input type="text" name="title" class="form-control">
+       		<input type="text" name="title" class="form-control" required>
        	</div>
 
        	<div class="form-group">
        		<label>Content</label>
-       		<textarea  name="body" class="form-control" rows="10"></textarea> 
+       		<textarea  name="body" class="form-control" rows="10" required></textarea> 
        	</div>
 
        	<div class="form-group">
        		<label>Slug</label>
-       		<input type="text" name="slug" class="form-control">
+       		<input type="text" name="slug" class="form-control" required>
        	</div>
 
        	<div class="form-group">

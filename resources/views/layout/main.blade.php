@@ -8,6 +8,7 @@
 	@include('layout.partials._nav')
 	<div class="container">
 		@include('layout.partials._devInfo')
+		@include('layout.partials._messages')
 		@yield('content')
 		
 	</div>
