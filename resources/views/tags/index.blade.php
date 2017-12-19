@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
 	<div class="col-md-2">
-		<h3>All Tags</h3>
+		<h3>All Tags <span class="badge">{{$tags->total()}}</span></h3>
 	</div>
 	<div class="col-md-2 col-md-offset-8">
 		<a href="{{route('tags.create')}}" class="btn btn-primary btn-block pull-right">Create Tag</a>

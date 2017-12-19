@@ -43,7 +43,7 @@
                 </p>
                 </div>
                 <div class="col-md-4">
-                <p class="question-lg-actions">
+                <p class="question-lg-actions pull-right">
                 	<a href="{{route('questions.edit',$quest->id)}}" class="btn btn-info btn-sm">Edit</a>
                 	<a href="{{route('questions.destroy',$quest->id)}}" class="btn btn-danger btn-sm">Delete</a>
                 </p>

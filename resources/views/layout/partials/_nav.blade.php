@@ -1,5 +1,5 @@
 <!-- upper navigation bar-->
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar m-navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 

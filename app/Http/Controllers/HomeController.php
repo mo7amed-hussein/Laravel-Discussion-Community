@@ -30,7 +30,7 @@ class HomeController extends Controller
         }
 
         $user = User::where('userName',$userName)->first();
-        $questions = Question::where('user_id',Auth::id())->paginate(5);
+        $questions = Question::where('user_id',$user->id)->paginate(5);
         //dd($user);
         return view('profile')->with('user',$user)->with('questions',$questions);
     }

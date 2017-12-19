@@ -1,7 +1,11 @@
+body
+{
+	background-color: #F9F9F9;
+}
 .question-lg
 {
-	background-color: #f8f8f8;
-	border-color: #e7e7e7;
+	background-color: white;
+	border: 1px solid #e3e3e3;
 	padding: 10px;
 	border-radius: 2%;
 	margin-bottom: 10px;
@@ -9,17 +13,25 @@
 
 .comment-sidebar 
 {
-	background-color: #f8f8f8;
-	border-color: #e7e7e7;
+	background-color: white;
+	border: 1px solid #e3e3e3;
 	padding: 5px;
 	border-radius: 1%;
 	margin: 0 auto;
 	margin-bottom: 5px;
 }
 
+hr
+{
+	
+	border-color: #B90091;
+	border: solid 1px #B90091;
+	margin-top:5px;
+	margin-bottom: 10px;
+}
 .question-form
 {
-	background-color: #f8f8f8;
+	background-color: white;
 	border-color: #e7e7e7;
 	padding: 10px;
 	border-radius: 1%;
@@ -28,7 +40,7 @@
 
 .back-primary
 {
-	background-color: #f8f8f8;
+	background-color: white;
 }
 
 .bottom-space-md
@@ -45,6 +57,7 @@ margin-bottom:15px;
 {
 	padding:8px;
 	margin-bottom: 50px;
+	border: 1px solid #e3e3e3;
 }
 .user-info>img
 {
@@ -53,4 +66,55 @@ margin-bottom:15px;
 	margin: 0 auto; 
 	border-radius: 50%;
 	border: solid 4px white;
+}
+
+.question-block
+{
+	padding: 15px;
+	border: 1px solid #e3e3e3;
+}
+.title-block>h3
+{
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 2px;
+}
+.question-tags-lg ,.comment-sidebar-content
+{
+	margin-top: 5px; 
+}
+.m-navbar
+{
+	background-color: #B90091;
+	border-color: #e7e7e7;
+	color: white;
+}
+.m-navbar .navbar-brand
+{
+	color: white;
+}
+
+.navbar-default .navbar-nav > li > a
+{
+	color: white;
+}
+.navbar-default .navbar-nav > li > a:hover
+{
+	color: white;
+	font-weight: bold;
+}
+
+.dropdown-menu
+{
+	background-color: #B90091;
+	border-color: #e7e7e7;
+	
+}
+.dropdown-menu > li > a
+{
+	color: white;
+}
+.navbar-default .navbar-nav > .active > a
+{
+	background-color: #B90091;
 }
