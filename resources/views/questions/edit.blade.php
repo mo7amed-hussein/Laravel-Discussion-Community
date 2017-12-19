@@ -12,7 +12,7 @@
         <h3>Edit Question</h2>
         </div>
         <div class="panel-body">
-       <form action="{{route('questions.update',$question->id)}}" method="PUT" >
+       <form action="{{route('questions.update',$question->id)}}" method="post" >
         {{csrf_field()}}
         <div class="form-group">
           <label>Title</label>

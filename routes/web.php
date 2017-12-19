@@ -14,7 +14,14 @@
 
 Route::get('/', 'HomeController@getIndex')->name('home');
 Route::get('/popular', 'HomeController@getPopular')->name('home.popular');
-Route::resource('questions','QuestionController');
+//questions routes
+Route::resource('questions','QuestionController',['except'=>['update','destroy'] ]);
+
+Route::post('questions/{id}','QuestionController@update')->name('questions.update');
+
+Route::get('questions/{id}/del','QuestionController@destroy')->name('questions.destroy');
+
+
 Route::resource('profile','ProfileController');
 Auth::routes();
 
