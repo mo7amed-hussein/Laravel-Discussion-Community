@@ -8,7 +8,7 @@
 		<div class="user-info back-primary">
 		<img src="{{url('avatar/'.$user->avatar)}}" style="">
 		<h4>{{$user->name}}</h4>
-        <small class="help-block"><a href="{{route('profile.all.show',$user->userName)}}">{{'@'.$user->userName}}</a> </small>
+        <small class="help-block"><a href="{{route('profile.all.show',$user->userName)}}" class="text-muted">{{'@'.$user->userName}}</a> </small>
 		<p>{{$user->bio}}</p>
 		<p><a href="">Messages</a></p>
 		<p>Egypt</p>
@@ -22,7 +22,7 @@
 	<div class="col-md-9">
 		<div class="row">
 			<ul class="nav nav-pills">
-				<li class="{{ Request::is('profile/'.$user->id)?'active':''}}"><a href="{{route('profile.show',$user->id)}}">Questions <span class="badge">{{$user->questions->count()}}</span></a></li>
+				<li class="{{ Request::is('/'.$user->userName)?'active':''}}"><a href="{{route('home',$user->id)}}">Questions <span class="badge">{{$user->questions->count()}}</span></a></li>
 				<li class="{{ Request::is('comments')?'active':''}}"><a href="">Comments</a></li>
 				<li class="{{ Request::is('fav')?'active':''}}"><a href="">Favorites</a></li>
 			</ul>

@@ -26,6 +26,9 @@
 				<dd>{{$tag->name}}</dd>
 				<dt>Questions :</dt>
 				<dd><span class="badge">{{$tag->questions->count()}}</span></dd>
+				<hr>
+				<div class="text-center"><a href="{{route('tags.edit',$tag->id)}}" class="btn btn-info">Edit</a>
+					<a href="{{route('tags.destroy',$tag->id)}}" class="btn btn-danger">delete</a></div>
 			</dl>
 		</div>
 	</div>

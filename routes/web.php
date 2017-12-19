@@ -17,4 +17,11 @@ Route::get('/popular', 'HomeController@getPopular')->name('home.popular');
 Route::resource('questions','QuestionController');
 Route::resource('profile','ProfileController');
 Auth::routes();
-Route::resource('tags','TagController');
+
+//tags route
+Route::resource('tags','TagController',['except'=>['update','destroy'] ]);
+Route::post('tags/{id}','TagController@update')->name('tags.update');
+
+Route::get('tags/{id}/del','TagController@destroy')->name('tags.destroy');
+
+Route::get('/{userName}', 'HomeController@getProfile')->name('profile.all.show');

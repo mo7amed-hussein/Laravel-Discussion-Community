@@ -11,12 +11,16 @@
 </div>
 <div class="row">
 	<table class="table">
-		<thead><th>#</th><th>Name</th><th>Questions</th></thead>
+		<thead><th>#</th><th>Name</th><th>Questions</th><th>Actions</th></thead>
 		<tbody>
 			@foreach($tags as $tag)
 			<tr><td>{{$tag->id}}</td>
 				<td><a href="{{route('tags.show',$tag->id)}}" class="label label-default">{{$tag->name}}</a></td>
 				<td>{{$tag->questions->count()}}</td>
+				<td>
+					<a href="{{route('tags.edit',$tag->id)}}" class="btn btn-info btn-sm">Edit</a>
+					<a href="{{route('tags.destroy',$tag->id)}}" class="btn btn-danger btn-sm">delete</a>
+				</td>
 			</tr>
 			@endforeach
 		</tbody>
