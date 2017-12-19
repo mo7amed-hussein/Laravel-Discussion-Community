@@ -1,6 +1,7 @@
 <!-- upper navigation bar-->
 <nav class="navbar m-navbar navbar-default navbar-static-top">
             <div class="container">
+                <div class="row">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -25,7 +26,18 @@
                          @if(Auth::check())
                          <li><a href="{{route('tags.index')}}">Tags</a></li>
                          @endif
+                         <li>
+                         </li>
                     </ul>
+
+                    <div class="nav navbar-nav col-md-4 col-md-offset-8">
+                           <form class="navbar-form form-inline" method="get" action="{{route('search')}}">
+                                
+                                <div class="form-group">
+                             <input type="text" name="keyword" class="form-control">
+                             <input type="submit" name="submit" value="search" class="form-control btn btn-default"></div>
+                         </form>
+                    </div>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
@@ -60,6 +72,7 @@
                         <li><a href="{{route('login')}}">Login</a></li>
                         @endif
                     </ul>
+                </div>
                 </div>
             </div>
         </nav>

@@ -33,3 +33,5 @@ Route::get('tags/{id}/del','TagController@destroy')->name('tags.destroy');
 
 Route::get('/{userName}', 'HomeController@getProfile')->name('profile.all.show');
 Route::get('question/{slug}', 'HomeController@getQuestion')->name('question.all.show');
+
+Route::get('search/all/', 'SearchController@searchQuestions')->name('search');
