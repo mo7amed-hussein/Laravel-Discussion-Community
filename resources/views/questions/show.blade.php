@@ -17,7 +17,7 @@
                 </div>
                 <div class="question-tags-block">
                   @foreach($question->tags as $tag)
-                  <a class="label label-default">{{$tag->name}}</a>
+                  <a class="label label-default" href="{{route('tags.show',$tag->id)}}">{{$tag->name}}</a>
                   @endforeach
                 </div>
             </div>

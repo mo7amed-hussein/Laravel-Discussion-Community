@@ -21,7 +21,7 @@
                 </div>
                 <p class="question-tags-lg">
                     @foreach($quest->tags as $tag)
-                  <a class="label label-default">{{$tag->name}}</a>
+                  <a class="label label-default" href="{{route('tags.show',$tag->id)}}">{{$tag->name}}</a>
                   @endforeach
                 </p>
             </div>
