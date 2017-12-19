@@ -2,6 +2,14 @@
 @section('title',' | all tags')
 @section('content')
 <div class="row">
+	<div class="col-md-2">
+		<h3>All Tags</h3>
+	</div>
+	<div class="col-md-2 col-md-offset-8">
+		<a href="{{route('tags.create')}}" class="btn btn-primary btn-block pull-right">Create Tag</a>
+	</div>
+</div>
+<div class="row">
 	<table class="table">
 		<thead><th>#</th><th>Name</th><th>Questions</th></thead>
 		<tbody>

@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title',' | $tag->name')
+@section('title',' | '.$tag->name)
 @section('content')
 <div class="row">
 	<div class="col-md-8">

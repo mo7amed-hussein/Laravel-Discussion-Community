@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tag;
+use Session;
 class TagController extends Controller
 {
     /**
@@ -26,6 +27,7 @@ class TagController extends Controller
     public function create()
     {
         //
+        return view('tags.create');
     }
 
     /**
@@ -37,6 +39,12 @@ class TagController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,['name'=>'required|max:255|unique:tags']);
+        $tag = new Tag;
+        $tag->name=$request->name;
+        $tag->save();
+        Session::flash("success","tag added successfully");
+        return redirect()->route('tags.index');
     }
 
     /**
