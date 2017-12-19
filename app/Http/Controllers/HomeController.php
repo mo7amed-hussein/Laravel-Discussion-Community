@@ -35,5 +35,17 @@ class HomeController extends Controller
         return view('profile')->with('user',$user)->with('questions',$questions);
     }
 
+    public function getQuestion($slug)
+    {
+        $question = Question::where('slug',$slug)->first();
+        if(Auth::check() & (Auth::id() == $question->user_id) )
+        {
+            return redirect()->route('questions.show',$question->id);
+        }
+        $question->increment('views');
+        $recentQuestions = Question::orderBy('created_at','desc')->take(10)->get();
+        return view('question')->with('question',$question)->with('recentQuestions',$recentQuestions);
+    }
+
 
 }

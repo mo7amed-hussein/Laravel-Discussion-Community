@@ -8,7 +8,7 @@
 		<tbody>
 			@foreach($tag->questions as $quest)
 			<tr><td>{{$quest->id}}</td>
-				<td><a href="{{route('questions.show',$quest->id)}}" class="btn btn-link">{{$quest->title}}</a></td>
+				<td><a href="{{route('question.all.show',$quest->slug)}}" class="btn btn-link">{{$quest->title}}</a></td>
 				<td>
 					@foreach($quest->tags as $tag)
 					<a href="{{route('tags.show',$tag->id)}}" class="label label-default">{{$tag->name}}</a>

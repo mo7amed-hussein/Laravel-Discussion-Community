@@ -14,7 +14,7 @@
         <div class="row"> 
             @foreach($questions as $quest)
             <div class="question-lg">
-                <p class="title-lg"> <a href="{{route('questions.show',$quest->id)}}" class="text text-primary">{{$quest->title}}</a> </p>
+                <p class="title-lg"> <a href="{{route('question.all.show',$quest->slug)}}" class="text text-primary">{{$quest->title}}</a> </p>
                 <div class="question-lg-info">
                      <img src="{{url('avatar/'.$quest->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
                      <small class="text-muted"><a href="{{route('profile.all.show',$quest->user->userName)}}">{{$quest->user->name}}</a> | asked {{$quest->created_at->diffForHumans()}} |3 answers |{{$quest->views}} views</small>
