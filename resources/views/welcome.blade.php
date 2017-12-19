@@ -34,7 +34,7 @@
     </div>
     <div class="col-md-3 col-md-offset-1">
        <div class="row text-center">
-            <h4><span class="label label-primary">Most Recent Comments</span></h4>
+            <h4><span class="label label-primary label-main">Most Recent Comments</span></h4>
            <hr>
        </div>
 

@@ -94,14 +94,50 @@ margin-bottom:15px;
 	color: white;
 }
 
-.navbar-default .navbar-nav > li > a
+.navbar-default .navbar-nav > .open > a:hover,
+ .navbar-default .navbar-nav > .open > a:focus
+{
+	background-color: #B90091;
+	color: white;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #fff;
+    background-color: #B90091;
+}
+
+.label-main {
+    background-color: #B90091;
+    padding: 8px;
+}
+.panel-default > .panel-heading ,.panel-default > .panel-footer
+ {
+    color: #fff;
+    background-color: #B90091;
+    border-color: #ddd;
+}
+pagination > .active > a, .pagination > .active > span,
+ .pagination > .active > a:hover, .pagination > .active > span:hover,
+ .pagination > .active > a:focus, .pagination > .active > span:focus {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #48dd00;
+    border-color: #48dd00;
+}
+
+
+.m-navbar .navbar-brand:hover
 {
 	color: white;
+}
+.navbar-default .navbar-nav > li > a
+{
+	color: #e3e3e3;
 }
 .navbar-default .navbar-nav > li > a:hover
 {
 	color: white;
-	font-weight: bold;
 }
 
 .dropdown-menu
@@ -117,4 +153,12 @@ margin-bottom:15px;
 .navbar-default .navbar-nav > .active > a
 {
 	background-color: #B90091;
+}
+
+.btn-main
+{
+	color: #fff;
+    background-color: #48dd00;
+    border-color: #48dd00;
+    padding-top: 5px;
 }

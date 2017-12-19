@@ -1,5 +1,5 @@
 <div class="row text-center">
-            <h4><span class="label label-primary">Most Recent Questions</span></h4>
+            <h4><span class="label label-primary label-main">Most Recent Questions</span></h4>
            <hr>
        </div>
        <div class="row">
