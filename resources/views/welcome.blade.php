@@ -7,7 +7,7 @@
             <ul class="nav nav-pills">
                 <li class="{{ Request::is('/')?'active':''}}"><a href="{{route('home')}}">Recent</a></li>
                 <li class="{{ Request::is('popular')?'active':''}}"><a href="{{route('home.popular')}}">Popular</a></li>
-                <li class="{{ Request::is('intersted')?'active':''}}"><a href="">Intersted</a></li>
+                <li class="{{ Request::is('intersted')?'active':''}}"><a href="">Best</a></li>
             </ul>
             <hr>
         </div>

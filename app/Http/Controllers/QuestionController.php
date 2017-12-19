@@ -132,5 +132,10 @@ class QuestionController extends Controller
     public function destroy($id)
     {
         //
+        $question = Question::find($id);
+        $question->tags()->detach();
+        $question->delete();
+        Session::flash("success","Question deleted successfully");
+        return redirect()->back();
     }
 }

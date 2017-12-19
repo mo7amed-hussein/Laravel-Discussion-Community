@@ -30,7 +30,8 @@
 		</div>
 		<div class="row">
             @foreach($questions as $quest)
-            <div class="question-lg">
+            <div class="question-lg row">
+            	<div class="col-md-8">
                 <p class="title-lg"> <a href="{{route('questions.show',$quest->id)}}" class="text text-primary">{{$quest->title}}</a> </p>
                 <div class="question-lg-info">
                      <small class="text-muted">asked {{$quest->created_at->diffForHumans()}} |3 answers |{{$quest->views}} views</small>
@@ -40,6 +41,13 @@
                   <a class="label label-default" href="{{route('tags.show',$tag->id)}}">{{$tag->name}}</a>
                   @endforeach
                 </p>
+                </div>
+                <div class="col-md-4">
+                <p class="question-lg-actions">
+                	<a href="{{route('questions.edit',$quest->id)}}" class="btn btn-info btn-sm">Edit</a>
+                	<a href="{{route('questions.destroy',$quest->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                </p>
+                </div>
             </div>
             @endforeach
             <p class="text-center">{{$questions->links()}}</p>
