@@ -28,6 +28,20 @@ class CommentController extends Controller
 
     }
 
+    public function storeReply(Request $request,Comment $comment)
+    {
+        //
+        $this->validate($request ,['body'=>'required']);
+        $com = new Comment;
+        $com->body = $request->body;
+        $com->user_id=Auth::id();
+        $comment->comments()->save($com);
+        return back();
+
+    }
+
+
+
     /**
      * Display the specified resource.
      *

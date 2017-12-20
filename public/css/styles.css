@@ -154,6 +154,10 @@ pagination > .active > a, .pagination > .active > span,
 {
 	background-color: #B90091;
 }
+ul
+{
+	list-style: none;
+}
 
 .btn-main
 {
@@ -166,4 +170,12 @@ pagination > .active > a, .pagination > .active > span,
 footer
 {
 	margin-top: 50px;
+}
+
+.comment
+{
+	background-color: white;
+	margin-bottom: 5px;
+	padding: 8px;
+	border: 1px solid #e3e3e3;
 }
