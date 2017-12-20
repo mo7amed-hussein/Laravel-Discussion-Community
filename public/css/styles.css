@@ -1,7 +1,21 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body
 {
 	background-color: #F9F9F9;
+	margin-bottom: 60px;
 }
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+}
+
 .question-lg
 {
 	background-color: white;
@@ -110,7 +124,7 @@ margin-bottom:15px;
     background-color: #B90091;
     padding: 8px;
 }
-.panel-default > .panel-heading ,.panel-default > .panel-footer
+.panel-default > .panel-heading 
  {
     color: #fff;
     background-color: #B90091;
@@ -167,6 +181,10 @@ ul
     padding-top: 5px;
 }
 
+.vote-block
+{
+	padding: 5px;
+}
 footer
 {
 	margin-top: 50px;

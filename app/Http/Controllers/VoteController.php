@@ -4,38 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Vote;
 use Illuminate\Http\Request;
-
+use App\Question;
+use App\Comment;
+use Auth;
 class VoteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function voteQuestion(Request $request,Question $question)
     {
         //
+        $vote = new Vote;
+        $vote->user_id= Auth::id();
+        $question->votes()->save($vote);
+        return back();
     }
 
     /**

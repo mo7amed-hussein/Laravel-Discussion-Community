@@ -20,4 +20,10 @@ class Comment extends Model
     	//return $this->hasMany('App\Comment');
         return $this->morphMany('App\Comment','commentable');
     }
+
+    public function votes()
+    {
+        //return $this->hasMany('App\Comment');
+        return $this->morphMany('App\Vote','votatable');
+    }
 }

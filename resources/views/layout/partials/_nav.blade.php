@@ -23,8 +23,10 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
+                        <li><a href="{{route('home')}}">Questions</a></li>
                          @if(Auth::check())
                          <li><a href="{{route('tags.index')}}">Tags</a></li>
+                         <li><a href="{{route('tags.index')}}">Users</a></li>
                          @endif
                          <li>
                          </li>

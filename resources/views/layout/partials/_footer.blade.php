@@ -1,5 +1,5 @@
 <!-- page footer -->
-<footer class="navbar m-navbar navbar-default navbar-static-bottom">
+<footer class="footer m-navbar ">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">

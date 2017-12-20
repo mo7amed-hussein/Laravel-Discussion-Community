@@ -10,6 +10,9 @@
                 <div class="question-block-info">
                      <img src="{{url('avatar/'.$question->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
                      <small class="text-muted"><a href="{{route('profile.all.show',$question->user->userName)}}">{{$question->user->name}}</a> | asked {{$question->created_at->diffForHumans()}} |3 answers | {{$question->views}} views</small>
+                     
+                       
+                     
                      <hr>
                 </div>
                 <div class="question-body">
@@ -23,9 +26,15 @@
                 </div>
             </div>
             </div>
-            <div class="row back-primary bottom-space-md">
+            <div class="row back-primary bottom-space-md vote-block">
               <!-- question votes-->
-              Question votes
+              Vote : <a href="" class="btn btn-warning btn-xs"><</a>
+                        4 <a href="" class="btn btn-success btn-xs">></a>
+                       <div class="share-btns pull-right">
+                         <a href="" class="btn social facebook">f</a>
+                         <a href="" class="btn social twitter">t</a>
+                         <a href="" class="btn social googleplus">g</a>
+                       </div>
             </div>
             <div class="row back-primary comment-form bottom-space-md">
               <!-- comment form-->

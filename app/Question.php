@@ -26,4 +26,9 @@ class Question extends Model
     {
         return $this->morphMany('App\Vote','votable');
     }
+
+    public function favorites()
+    {
+        return $this->hasMany('App\Favorite');
+    }
 }
