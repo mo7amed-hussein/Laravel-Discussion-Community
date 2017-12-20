@@ -36,3 +36,4 @@ Route::get('question/{slug}', 'HomeController@getQuestion')->name('question.all.
 
 Route::get('search/all/', 'SearchController@searchQuestions')->name('search');
 
+Route::post('comments/{qestion}','CommentController@store')->name('comments.store');

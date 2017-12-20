@@ -29,19 +29,21 @@
             </div>
             <div class="row back-primary comment-form bottom-space-md">
               <!-- comment form-->
-              <form method="post" action="">
+              <form method="post" action="{{route('comments.store',$question->id)}}">
                 {{csrf_field()}}
                 <div class="form-group">
                   <label>Leave a Comment</label>
-                  <textarea class="form-control" name="comment" rows="5"></textarea>
+                  <textarea class="form-control" name="body" rows="5"></textarea>
                 </div>
                 <input type="submit" name="submit" value="submit" class="btn btn-success">
               </form>
             </div>
             <div class="row">
-              <h3>Comments</h3>
+              <h3>Comments <span class="badge">{{$question->comments->count()}}</span></h3>
               <hr>
-              ...............
+              <div class="comments-block">
+                
+              </div>
             </div>
     </div>
    
