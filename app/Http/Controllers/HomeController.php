@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\User;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
@@ -13,13 +14,19 @@ class HomeController extends Controller
     public function getIndex()
     {
     	$questions = Question::orderBy('created_at','desc')->paginate(3);
-    	return view('welcome')->with('questions',$questions);
+
+        $comments = Comment::where('commentable_type','App\Question')->orderBy('created_at','desc')->take(10)->get();
+
+    	return view('welcome')->with('questions',$questions)->with('comments',$comments->all());
     }
 
     public function getPopular()
     {
     	$questions = Question::orderBy('views','desc')->paginate(3);
-    	return view('welcome')->with('questions',$questions);
+
+    	$comments = Comment::where('commentable_type','App\Question')->orderBy('created_at','desc')->take(10)->get();
+        
+        return view('welcome')->with('questions',$questions)->with('comments',$comments);
     }
 
     public function getProfile($userName)

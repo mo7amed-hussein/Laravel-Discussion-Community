@@ -37,39 +37,18 @@
             <h4><span class="label label-primary label-main">Most Recent Comments</span></h4>
            <hr>
        </div>
-
-       <div class="comment-sidebar">
-              <div class="question-lg-info">
-                     <img src="{{url('img/avatar.jpg')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">Mohamed Hussein | 33 min ago</small>
-                </div>
-                <p class="comment-sidebar-content"> <a href="" class="text text-primary">what is the main difference between ...</a> </p>
-        </div>
-
+       <div class="row">
+        @foreach($comments as $comment)
         <div class="comment-sidebar">
               <div class="question-lg-info">
-                     <img src="{{url('img/avatar.jpg')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">Mohamed Hussein | 33 min ago</small>
+                     <img src="{{url('avatar/'.$comment->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
+                     <small class="text-muted">{{$comment->user->name}} | {{$comment->created_at->diffForHumans()}}</small>
                 </div>
-                <p class="comment-sidebar-content"> <a href="" class="text text-primary">what is the main difference between ...</a> </p>
+                <p class="comment-sidebar-content"> <a href="{{route('question.all.show',$comment->commentable->slug)}}" class="text text-primary"> {{str_limit($comment->body,50)}}</a> </p>
         </div>
-
-        <div class="comment-sidebar">
-              <div class="question-lg-info">
-                     <img src="{{url('img/avatar.jpg')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">Mohamed Hussein | 33 min ago</small>
-                </div>
-                <p class="comment-sidebar-content"> <a href="" class="text text-primary">what is the main difference between ...</a> </p>
+        @endforeach
+        <hr>
         </div>
-
-        <div class="comment-sidebar">
-              <div class="question-lg-info">
-                     <img src="{{url('img/avatar.jpg')}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">Mohamed Hussein | 33 min ago</small>
-                </div>
-                <p class="comment-sidebar-content"> <a href="" class="text text-primary">what is the main difference between ...</a> </p>
-        </div>
-
     </div>
 </div>
 @endsection
