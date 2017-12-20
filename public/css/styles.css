@@ -162,3 +162,8 @@ pagination > .active > a, .pagination > .active > span,
     border-color: #48dd00;
     padding-top: 5px;
 }
+
+footer
+{
+	margin-top: 50px;
+}
