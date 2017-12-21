@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Question;
+use Auth;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -45,5 +46,17 @@ class User extends Authenticatable
     public function favorites()
     {
         return $this->hasMany('App\Favorite');
+    }
+
+    public function favorite( $question)
+    {
+        $fav =Favorite::where('question_id',$question)->where('user_id',Auth::id())->get();
+       // Question::find($question)->favorites()->where('user_id',Auth::id());
+       // dd($fav);
+        if($fav->isEmpty())
+        {
+            return false;
+        }
+        return true;
     }
 }

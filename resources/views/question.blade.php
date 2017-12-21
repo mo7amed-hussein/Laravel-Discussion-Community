@@ -31,11 +31,24 @@
               <a href="" class="btn social facebook">f</a>
                          <a href="" class="btn social twitter">t</a>
                          <a href="" class="btn social googleplus">g</a>
-                         
+
               
                       
                        <div class="share-btns pull-right">
+                        
+
+                        @if(Auth::check())
+
+                        @if(Auth::user()->favorite($question->id))
+                        <a href="{{route('favorite.remove',$question->id)}}" class="btn btn-link">remove favorite</a>
+                        @else
+                        <a href="{{route('favorite.add',$question->id)}}" class="btn btn-link">add favorite</a>
+
+                        @endif
+                          @endif
+
                          <a href="{{route('vote.question.down',$question->id)}}" class="btn btn-link"> Dislike</a><span class="badge">{{$question->votes->where('value','-1')
+                        
                         ->count()}}</span> |
                         <a href="{{route('vote.question.up',$question->id)}}" class="btn btn-link">Like</a>
               <span class="badge">{{$question->votes->where('value','1')

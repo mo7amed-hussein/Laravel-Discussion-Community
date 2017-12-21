@@ -19,14 +19,14 @@ class FavoriteController extends Controller
 	{
 		$fav = new Favorite;
 		$fav->user_id=Auth::id();
-		$fav->question_id=$question;
+		$fav->question_id=$question->id;
 		$fav->save();
 		return back();
 	}
 
 	public function removeFavorites(Question $question)
 	{
-		$fav = Favorite::where('question_id',$question)->where('user_id',Auth::id(););
+		$fav = Favorite::where('question_id',$question)->where('user_id',Auth::id());
 		if($fav)
 		{
 			$fav->delete();
