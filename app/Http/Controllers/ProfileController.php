@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Question;
+use Auth;
 class ProfileController extends Controller
 {
     /**
@@ -17,14 +18,25 @@ class ProfileController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function updateName(Request $request)
     {
-        //
+        $this->validate($request,['name'=>'required']);
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->update();
+        return back()->with('success','Name updated successfully');
+    }
+
+    public function updateUserName(Request $request)
+    {
+        $user = Auth::user();
+        if($user->userName != $request->userName)
+        {
+            $this->validate($request,['userName'=>'required|unique:users']);
+            $user->name = $request->name;
+             $user->update();
+        }
+        return back()->with('success','user Name updated successfully');
     }
 
     /**

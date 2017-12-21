@@ -22,6 +22,12 @@ body
 	border: 1px solid #e3e3e3;
 	padding-right: 10px;
 }
+
+.btn-setting
+{
+	width: 20px;
+	height: 20px;
+}
 .question-lg
 {
 	background-color: white;

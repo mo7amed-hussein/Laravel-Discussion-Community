@@ -50,3 +50,6 @@ Route::get('voteQuestion/up/{question}', 'VoteController@voteQuestionUp')->name(
 Route::get('favorite/add/{question}', 'FavoriteController@addFavorites')->name('favorite.add');
 
 Route::get('favorite/remove/{question}', 'FavoriteController@removeFavorites')->name('favorite.remove');
+
+Route::post('updateName','ProfileController@updateName')->name('updateName');
+Route::post('updateUserName','ProfileController@updateUserName')->name('updateUserName');
