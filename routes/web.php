@@ -46,3 +46,7 @@ Route::get('voteComment/down/{comment}', 'VoteController@voteCommentDown')->name
 Route::get('voteQuestion/down/{question}', 'VoteController@voteQuestionDown')->name('vote.question.down');
 
 Route::get('voteQuestion/up/{question}', 'VoteController@voteQuestionUp')->name('vote.question.up');
+
+Route::get('favorite/add/{question}', 'FavoriteController@addFavorites')->name('favorite.add');
+
+Route::get('favorite/remove/{question}', 'FavoriteController@removeFavorites')->name('favorite.remove');
