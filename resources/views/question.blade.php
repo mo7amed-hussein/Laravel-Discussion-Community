@@ -9,7 +9,7 @@
                   <h3>{{$question->title}}</h3> </div>
                 <div class="question-block-info">
                      <img src="{{url('avatar/'.$question->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted"><a href="{{route('profile.all.show',$question->user->userName)}}">{{$question->user->name}}</a> | asked {{$question->created_at->diffForHumans()}} |3 answers | {{$question->views}} views</small>
+                     <small class="text-muted"><a href="{{route('profile.all.show',$question->user->userName)}}">{{$question->user->name}}</a> | asked {{$question->created_at->diffForHumans()}} | {{$question->comments->count()}} answers | {{$question->views}} views</small>
                      
                        
                      
@@ -26,14 +26,20 @@
                 </div>
             </div>
             </div>
-            <div class="row back-primary bottom-space-md vote-block">
+            <div class="row back-primary bottom-space-md interaction-block">
               <!-- question votes-->
-              Vote : <a href="" class="btn btn-warning btn-xs"><</a>
-                        4 <a href="" class="btn btn-success btn-xs">></a>
-                       <div class="share-btns pull-right">
-                         <a href="" class="btn social facebook">f</a>
+              <a href="" class="btn social facebook">f</a>
                          <a href="" class="btn social twitter">t</a>
                          <a href="" class="btn social googleplus">g</a>
+                         
+              
+                      
+                       <div class="share-btns pull-right">
+                         <a href="{{route('vote.question.down',$question->id)}}" class="btn btn-link"> Dislike</a><span class="badge">{{$question->votes->where('value','-1')
+                        ->count()}}</span> |
+                        <a href="{{route('vote.question.up',$question->id)}}" class="btn btn-link">Like</a>
+              <span class="badge">{{$question->votes->where('value','1')
+                        ->count()}}</span>
                        </div>
             </div>
             <div class="row back-primary comment-form bottom-space-md">
@@ -59,7 +65,16 @@
         <div class="comment-info">
                      <img src="{{url('avatar/'.$comment->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
                      <small class="text-muted"><a href="{{route('profile.all.show',$comment->user->userName)}}">{{$comment->user->name}}</a> |  {{$comment->created_at->diffForHumans()}}</small>
-                     <a href="{{route('comments.reply',$comment->id)}}" class="btn btn-primary reply-btn btn-xs pull-right" id="reply-btn">Reply</a>
+                     <div class="comment-interaction pull-right">
+                      <a href="{{route('comments.reply',$comment->id)}}" class="btn btn-primary reply-btn btn-xs" id="reply-btn">Reply</a>
+
+                       <a href="{{route('vote.comment.down',$comment->id)}}" class="btn btn-link"> Dislike</a><span class="badge">{{$comment->votes->where('value','-1')
+                        ->count()}}</span> |
+                        <a href="{{route('vote.comment.up',$comment->id)}}" class="btn btn-link">Like</a>
+              <span class="badge">{{$comment->votes->where('value','1')
+                        ->count()}}</span>
+                     </div>
+                     
             </div>
             <div class="comment-content">
           {{$comment->body}}

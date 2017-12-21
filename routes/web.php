@@ -38,3 +38,11 @@ Route::get('search/all/', 'SearchController@searchQuestions')->name('search');
 
 Route::post('comments/{qestion}','CommentController@store')->name('comments.store');
 Route::post('repy/{comment}','CommentController@storeReply')->name('comments.reply');
+
+Route::get('voteComment/up/{comment}', 'VoteController@voteCommentUp')->name('vote.comment.up');
+
+Route::get('voteComment/down/{comment}', 'VoteController@voteCommentDown')->name('vote.comment.down');
+
+Route::get('voteQuestion/down/{question}', 'VoteController@voteQuestionDown')->name('vote.question.down');
+
+Route::get('voteQuestion/up/{question}', 'VoteController@voteQuestionUp')->name('vote.question.up');
