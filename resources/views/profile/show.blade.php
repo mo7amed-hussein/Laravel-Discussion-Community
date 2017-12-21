@@ -38,8 +38,8 @@
 		<div class="row">
 			<ul class="nav nav-pills">
 				<li class="{{ Request::is('profile/'.$user->id)?'active':''}}"><a href="{{route('profile.show',$user->id)}}">Questions <span class="badge">{{$user->questions->count()}}</span></a></li>
-				<li class="{{ Request::is('comments')?'active':''}}"><a href="">Comments</a></li>
-				<li class="{{ Request::is('fav')?'active':''}}"><a href="">Favorites</a></li>
+				<li class="{{ Request::is('comments')?'active':''}}"><a href="">Comments <span class="badge">{{$comments}}</span></a></li>
+				<li class="{{ Request::is('fav')?'active':''}}"><a href="">Favorites <span class="badge">{{$favs}}</span></a></li>
 			</ul>
 			<hr>
 		</div>

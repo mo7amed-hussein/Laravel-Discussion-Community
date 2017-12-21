@@ -60,8 +60,10 @@ class ProfileController extends Controller
     {
         //
         $user = User::find($id);
+        $comments = $user->comments->count();
+        $favs = $user->favorites->count();
         $questions = Question::where('user_id',$id)->paginate(5);
-        return view('profile.show')->with('user',$user)->with('questions',$questions);
+        return view('profile.show')->with('user',$user)->with('questions',$questions)->with('comments',$comments)->with('favs',$favs);
     }
 
     /**

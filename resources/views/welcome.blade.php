@@ -7,7 +7,7 @@
             <ul class="nav nav-pills">
                 <li class="{{ Request::is('/')?'active':''}}"><a href="{{route('home')}}">Recent</a></li>
                 <li class="{{ Request::is('popular')?'active':''}}"><a href="{{route('home.popular')}}">Popular</a></li>
-                <li class="{{ Request::is('intersted')?'active':''}}"><a href="">Best</a></li>
+                <li class="{{ Request::is('rated')?'active':''}}"><a href="{{route('home.rated')}}">Best</a></li>
             </ul>
             <hr>
         </div>
@@ -17,7 +17,7 @@
                 <p class="title-lg"> <a href="{{route('question.all.show',$quest->slug)}}" class="text text-primary">{{$quest->title}}</a> </p>
                 <div class="question-lg-info">
                      <img src="{{url('avatar/'.$quest->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted"><a href="{{route('profile.all.show',$quest->user->userName)}}">{{$quest->user->name}}</a> | asked {{$quest->created_at->diffForHumans()}} |3 answers |{{$quest->views}} views</small>
+                     <small class="text-muted"><a href="{{route('profile.all.show',$quest->user->userName)}}">{{$quest->user->name}}</a> | asked {{$quest->created_at->diffForHumans()}} |{{$quest->comments->count()}} answers |{{$quest->views}} views</small>
                 </div>
                 <div class="question-tags-lg">
                     @foreach($quest->tags as $tag)
@@ -42,7 +42,7 @@
         <div class="comment-sidebar">
               <div class="question-lg-info">
                      <img src="{{url('avatar/'.$comment->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
-                     <small class="text-muted">{{$comment->user->name}} | {{$comment->created_at->diffForHumans()}}</small>
+                     <small class="text-muted"><a href="{{route('profile.all.show',$comment->user->userName)}}">{{$comment->user->name}}</a> | {{$comment->created_at->diffForHumans()}}</small>
                 </div>
                 <p class="comment-sidebar-content"> <a href="{{route('question.all.show',$comment->commentable->slug)}}" class="text text-primary"> {{str_limit($comment->body,50)}}</a> </p>
         </div>

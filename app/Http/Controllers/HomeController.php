@@ -13,7 +13,7 @@ class HomeController extends Controller
 
     public function getIndex()
     {
-    	$questions = Question::orderBy('created_at','desc')->paginate(3);
+    	$questions = Question::orderBy('created_at','desc')->paginate(10);
 
         $comments = Comment::where('commentable_type','App\Question')->orderBy('created_at','desc')->take(10)->get();
 
@@ -22,12 +22,22 @@ class HomeController extends Controller
 
     public function getPopular()
     {
-    	$questions = Question::orderBy('views','desc')->paginate(3);
+    	$questions = Question::orderBy('views','desc')->paginate(10);
 
     	$comments = Comment::where('commentable_type','App\Question')->orderBy('created_at','desc')->take(10)->get();
         
         return view('welcome')->with('questions',$questions)->with('comments',$comments);
     }
+
+    public function getRated()
+    {
+        $questions = Question::withCount('votes')->orderBy('votes_count','desc')->paginate(10);
+        //dd($questions);
+        $comments = Comment::where('commentable_type','App\Question')->orderBy('created_at','desc')->take(10)->get();
+        
+        return view('welcome')->with('questions',$questions)->with('comments',$comments);
+    }
+
 
     public function getProfile($userName)
     {
@@ -54,5 +64,10 @@ class HomeController extends Controller
         return view('question')->with('question',$question)->with('recentQuestions',$recentQuestions);
     }
 
+    public function getUsers()
+    {
+        $users = User::orderBy('created_at','desc')->paginate(10);
+        return view('users')->with('users',$users);
+    }
 
 }

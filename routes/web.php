@@ -14,6 +14,8 @@
 
 Route::get('/', 'HomeController@getIndex')->name('home');
 Route::get('/popular', 'HomeController@getPopular')->name('home.popular');
+
+Route::get('/rated', 'HomeController@getRated')->name('home.rated');
 //questions routes
 Route::resource('questions','QuestionController',['except'=>['update','destroy'] ]);
 
@@ -53,3 +55,5 @@ Route::get('favorite/remove/{question}', 'FavoriteController@removeFavorites')->
 
 Route::post('updateName','ProfileController@updateName')->name('updateName');
 Route::post('updateUserName','ProfileController@updateUserName')->name('updateUserName');
+
+Route::get('users/all/', 'HomeController@getUsers')->name('users');

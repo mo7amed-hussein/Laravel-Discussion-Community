@@ -26,7 +26,7 @@
                         <li><a href="{{route('home')}}">Questions</a></li>
                          @if(Auth::check())
                          <li><a href="{{route('tags.index')}}">Tags</a></li>
-                         <li><a href="{{route('tags.index')}}">Users</a></li>
+                         <li><a href="{{route('users')}}">Users</a></li>
                          @endif
                          <li>
                          </li>
