@@ -43,24 +43,16 @@
 			<hr>
 		</div>
 		<div class="row">
-            @foreach($data as $quest)
+            @foreach($data as $fav)
             <div class="question-lg row">
             	<div class="col-md-8">
-                <p class="title-lg"> <a href="{{route('questions.show',$quest->id)}}" class="text text-primary">{{$quest->title}}</a> </p>
+                <p class="title-lg"> <a href="{{route('question.all.show',$fav->question->slug)}}" class="text text-primary">{{ str_limit($fav->question->title,50)}}</a> </p>
                 <div class="question-lg-info">
-                     <small class="text-muted">asked {{$quest->created_at->diffForHumans()}} |3 answers |{{$quest->views}} views</small>
+                     <small class="text-muted">{{$fav->created_at->diffForHumans()}}</small>
                 </div>
-                <p class="question-tags-lg">
-                    @foreach($quest->tags as $tag)
-                  <a class="label label-default" href="{{route('tags.show',$tag->id)}}">{{$tag->name}}</a>
-                  @endforeach
-                </p>
                 </div>
                 <div class="col-md-4">
-                <div class="question-lg-actions pull-right btn-group-vertical">
-                	<a href="{{route('questions.edit',$quest->id)}}" class="btn btn-info btn-sm">Edit</a>
-                	<a href="{{route('questions.destroy',$quest->id)}}" class="btn btn-danger btn-sm">Delete</a>
-                </div>
+                  <a class="btn btn-warning pull-right" href="{{route('favorite.remove',$fav->id)}}">remove favorite</a>
                 </div>
             </div>
             @endforeach

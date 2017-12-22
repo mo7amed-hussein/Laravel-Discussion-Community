@@ -9,15 +9,13 @@ use Session;
 use Illuminate\Support\Facades\Auth;
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -68,6 +66,10 @@ class QuestionController extends Controller
     {
         //
         $question = Question::find($id);
+        if($question->user_id != $id)
+        {
+            return redirect()->route('question.all.show',$question->slug);
+        }
         $question->increment('views');
         $recentQuestions = Question::orderBy('created_at','desc')->take(10)->get();
         return view('questions.show')->with('question',$question)->with('recentQuestions',$recentQuestions);
@@ -134,7 +136,14 @@ class QuestionController extends Controller
         //
         $question = Question::find($id);
         $question->tags()->detach();
-        $question->delete();
+        $question->favorites()->delete();
+        $question->votes()->delete();
+        //dd($question->comments());
+       // Comment::where('commentable_type','App\Question')->where('commentable_id',$id)->delete();
+        //$question->comments()->votes()->delete();
+        //$question->comments()->comments()->delete();
+        //$question->comments()->delete();
+       // $question->delete();
         Session::flash("success","Question deleted successfully");
         return redirect()->back();
     }

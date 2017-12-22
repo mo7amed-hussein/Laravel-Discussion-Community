@@ -5,18 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Question;
+use App\Comment;
+use App\Favorite;
 use Auth;
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
+
 
     public function updateName(Request $request)
     {
@@ -60,11 +59,38 @@ class ProfileController extends Controller
     {
         //
         $user = User::find($id);
-        $comments = $user->comments->count();
+        $comments = Comment::where('user_id',$id)->where('commentable_type','App\Question')->count();
         $favs = $user->favorites->count();
-        $questions = Question::where('user_id',$id)->paginate(5);
-        return view('profile.show')->with('user',$user)->with('questions',$questions)->with('comments',$comments)->with('favs',$favs);
+        $questions = $user->questions->count();
+        $data = Question::where('user_id',$id)->paginate(5);
+        $tab = 'questions';
+        return view('profile.show')->with('data',$data)->with('user',$user)->with('questions',$questions)->with('comments',$comments)->with('favs',$favs)->with('tab',$tab);
     }
+
+    public function showComments($id)
+    {
+        //
+        $user = User::find($id);
+        $comments = Comment::where('user_id',$id)->where('commentable_type','App\Question')->count();
+        $favs = $user->favorites->count();
+        $questions = $user->questions->count();
+        $data = Comment::where('user_id',$id)->where('commentable_type','App\Question')->paginate(5);
+        $tab = 'comments';
+        return view('profile.showComments')->with('data',$data)->with('user',$user)->with('questions',$questions)->with('comments',$comments)->with('favs',$favs)->with('tab',$tab);
+    }
+
+    public function showFavs($id)
+    {
+        //
+        $user = User::find($id);
+        $comments = Comment::where('user_id',$id)->where('commentable_type','App\Question')->count();
+        $favs = $user->favorites->count();
+        $questions = $user->questions->count();
+        $data = Favorite::where('user_id',$id)->paginate(5);
+        $tab = 'favs';
+        return view('profile.showFavs')->with('data',$data)->with('user',$user)->with('questions',$questions)->with('comments',$comments)->with('favs',$favs)->with('tab',$tab);
+    }
+
 
     /**
      * Show the form for editing the specified resource.

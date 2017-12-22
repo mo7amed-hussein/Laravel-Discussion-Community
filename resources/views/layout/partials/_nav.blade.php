@@ -28,8 +28,7 @@
                          <li><a href="{{route('tags.index')}}">Tags</a></li>
                          <li><a href="{{route('users')}}">Users</a></li>
                          @endif
-                         <li>
-                         </li>
+                         <li><a href="{{route('questions.create')}}">Ask</a></li>
                     </ul>
 
                     <div class="nav navbar-nav col-md-4 col-md-offset-8">
@@ -45,12 +44,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         
                        
-                         <li><a href="{{route('questions.create')}}">Ask</a></li>
+                         
                          @if(Auth::check())
-                         <li><a href="#">test</a></li>
+                         
 
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"><img src="{{url('avatar/'.Auth::user()->avatar)}}" style="width: 25px; height: 25px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
                                     {{Auth::user()->name}} <span class="caret"></span>
                                 </a>
 

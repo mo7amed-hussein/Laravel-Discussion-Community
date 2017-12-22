@@ -50,13 +50,13 @@ class User extends Authenticatable
 
     public function favorite( $question)
     {
-        $fav =Favorite::where('question_id',$question)->where('user_id',Auth::id())->get();
+        $fav =Favorite::where('question_id',$question)->where('user_id',Auth::id())->first();
        // Question::find($question)->favorites()->where('user_id',Auth::id());
        // dd($fav);
-        if($fav->isEmpty())
+        if($fav)
         {
-            return false;
+            return $fav->id;
         }
-        return true;
+        return null;
     }
 }

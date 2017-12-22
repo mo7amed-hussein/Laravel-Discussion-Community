@@ -40,12 +40,12 @@
                         @if(Auth::check())
 
                         @if(Auth::user()->favorite($question->id))
-                        <a href="{{route('favorite.remove',$question->id)}}" class="btn btn-link">remove favorite</a>
+                        <a href="{{route('favorite.remove',Auth::user()->favorite($question->id))}}" class="btn btn-link">remove favorite</a>
                         @else
                         <a href="{{route('favorite.add',$question->id)}}" class="btn btn-link">add favorite</a>
 
                         @endif
-                          @endif
+                        @endif
 
                          <a href="{{route('vote.question.down',$question->id)}}" class="btn btn-link"> Dislike</a><span class="badge">{{$question->votes->where('value','-1')
                         
