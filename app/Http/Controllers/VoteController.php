@@ -17,7 +17,7 @@ class VoteController extends Controller
     public function voteQuestionUp(Question $question)
     {
         //
-        $vote = Vote::where('votable_type','App\Question')->where('user_id',Auth::id())->where('votable_id',$question)->first();
+        $vote = Vote::where('votable_type','App\Question')->where('user_id',Auth::id())->where('votable_id',$question->id)->first();
         if(!$vote)
         {
             $vote = new Vote;
@@ -33,7 +33,9 @@ class VoteController extends Controller
     public function voteQuestionDown(Question $question)
     {
         //
-        $vote = Vote::where('votable_type','App\Question')->where('user_id',Auth::id())->where('votable_id',$question)->first();
+
+        $vote = Vote::where('votable_type','App\Question')->where('user_id',Auth::id())->where('votable_id',$question->id)->first();
+        //dd($vote ,$question);
         if(!$vote)
         {
             $vote = new Vote;
@@ -52,7 +54,7 @@ class VoteController extends Controller
     public function voteCommentUp(Comment $comment)
     {
         //
-        $vote = Vote::where('votable_type','App\Comment')->where('user_id',Auth::id())->where('votable_id',$comment)->first();
+        $vote = Vote::where('votable_type','App\Comment')->where('user_id',Auth::id())->where('votable_id',$comment->id)->first();
         if(!$vote)
         {
             $vote = new Vote;
@@ -67,7 +69,7 @@ class VoteController extends Controller
     public function voteCommentDown(Comment $comment)
     {
         //
-        $vote = Vote::where('votable_type','App\Comment')->where('user_id',Auth::id())->where('votable_id',$comment)->first();
+        $vote = Vote::where('votable_type','App\Comment')->where('user_id',Auth::id())->where('votable_id',$comment->id)->first();
         if(!$vote)
         {
             $vote = new Vote;

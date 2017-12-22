@@ -22,9 +22,34 @@
                 </div>
             </div>
             </div>
-            <div class="row back-primary bottom-space-md">
+            <div class="row back-primary bottom-space-md interaction-block">
               <!-- question votes-->
-              Question votes
+              <a href="" class="btn social facebook">f</a>
+                         <a href="" class="btn social twitter">t</a>
+                         <a href="" class="btn social googleplus">g</a>
+
+              
+                      
+                       <div class="share-btns pull-right">
+                        
+
+                        @if(Auth::check())
+
+                        @if(Auth::user()->favorite($question->id))
+                        <a href="{{route('favorite.remove',Auth::user()->favorite($question->id))}}" class="btn btn-link">remove favorite</a>
+                        @else
+                        <a href="{{route('favorite.add',$question->id)}}" class="btn btn-link">add favorite</a>
+
+                        @endif
+                        @endif
+
+                         <a href="{{route('vote.question.down',$question->id)}}" class="btn btn-link"> Dislike</a><span class="badge">{{$question->votes->where('value','-1')
+                        
+                        ->count()}}</span> |
+                        <a href="{{route('vote.question.up',$question->id)}}" class="btn btn-link">Like</a>
+              <span class="badge">{{$question->votes->where('value','1')
+                        ->count()}}</span>
+                       </div>
             </div>
             <div class="row back-primary comment-form bottom-space-md">
               <!-- comment form-->
@@ -49,7 +74,16 @@
         <div class="comment-info">
                      <img src="{{url('avatar/'.$comment->user->avatar)}}" style="width: 30px; height: 30px;border-radius: 50%;display: inline;margin: 0px; margin-right: 5px">
                      <small class="text-muted"><a href="{{route('profile.all.show',$comment->user->userName)}}">{{$comment->user->name}}</a> |  {{$comment->created_at->diffForHumans()}}</small>
-                     <a href="{{route('comments.reply',$comment->id)}}" class="btn btn-primary reply-btn btn-xs pull-right" id="reply-btn">Reply</a>
+                     <div class="comment-interaction pull-right">
+                      <a href="{{route('comments.reply',$comment->id)}}" class="btn btn-primary reply-btn btn-xs" id="reply-btn">Reply</a>
+
+                       <a href="{{route('vote.comment.down',$comment->id)}}" class="btn btn-link"> Dislike</a><span class="badge">{{$comment->votes->where('value','-1')
+                        ->count()}}</span> |
+                        <a href="{{route('vote.comment.up',$comment->id)}}" class="btn btn-link">Like</a>
+              <span class="badge">{{$comment->votes->where('value','1')
+                        ->count()}}</span>
+                     </div>
+
             </div>
             <div class="comment-content">
           {{$comment->body}}
