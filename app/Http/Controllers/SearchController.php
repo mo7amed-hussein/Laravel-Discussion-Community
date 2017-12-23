@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use App\Question;
+use App\Comment;
 class SearchController extends Controller
 {
     //
@@ -22,6 +23,9 @@ class SearchController extends Controller
     	//dd($questionTags);
     	$currentPage = LengthAwarePaginator::resolveCurrentPage();
     	$data = new LengthAwarePaginator($items,$total,$count,$currentPage);
-    	return view('search.questions')->with('questions',$data)->with('keyword',$keyword);
+
+        $comments = Comment::where('commentable_type','App\Question')->orderBy('created_at','desc')->take(10)->get();
+
+    	return view('search.questions')->with('questions',$data)->with('keyword',$keyword)->with('comments',$comments);
     }
 }

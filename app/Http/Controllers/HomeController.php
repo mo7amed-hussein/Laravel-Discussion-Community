@@ -7,6 +7,8 @@ use App\Question;
 use App\User;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
+use Storage;
+use File;
 class HomeController extends Controller
 {
     //
@@ -57,7 +59,9 @@ class HomeController extends Controller
         $question = Question::where('slug',$slug)->first();
         if(Auth::check() & (Auth::id() == $question->user_id) )
         {
+
             return redirect()->route('questions.show',$question->id);
+            
         }
         $question->increment('views');
         $recentQuestions = Question::orderBy('created_at','desc')->take(10)->get();
@@ -68,6 +72,14 @@ class HomeController extends Controller
     {
         $users = User::orderBy('created_at','desc')->paginate(10);
         return view('users')->with('users',$users);
+    }
+
+    public function getAvatar($file)
+    {
+        dd('test');
+        $img = Storage::disk('public')->get('avatar/'.$file);
+        dd($img);
+        return new Response($img,200);
     }
 
 }

@@ -53,11 +53,11 @@
             </div>
             <div class="row back-primary comment-form bottom-space-md">
               <!-- comment form-->
-              <form method="post" action="">
+              <form method="post" action="{{route('comments.store',$question->id)}}">
                 {{csrf_field()}}
                 <div class="form-group">
                   <label>Leave a Comment</label>
-                  <textarea class="form-control" name="comment" rows="5"></textarea>
+                  <textarea class="form-control" name="body" rows="5"></textarea>
                 </div>
                 <input type="submit" name="submit" value="submit" class="btn btn-success">
               </form>

@@ -11,7 +11,7 @@
         <small class="help-block"><a href="{{route('profile.all.show',$user->userName)}}" class="text-muted">{{'@'.$user->userName}}</a> </small>
 		<p><strong>Bio </strong>{{$user->bio}}</p>
 		
-		<p>Country</p>
+		<p>Country:</strong>{{$user->country}}</p>
 		<p>{{$user->email}}</p>
 		<p>join : {{date('M j,Y',strtotime($user->created_at))}}</p>
 		<p>last : {{$user->updated_at->diffForHumans()}}</p>

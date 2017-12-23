@@ -8,6 +8,8 @@ use App\Question;
 use App\Comment;
 use App\Favorite;
 use Auth;
+use Storage;
+use File;
 class ProfileController extends Controller
 {
     
@@ -36,6 +38,54 @@ class ProfileController extends Controller
              $user->update();
         }
         return back()->with('success','user Name updated successfully');
+    }
+
+    public function updateBio(Request $request)
+    {
+        $this->validate($request,['bio'=>'required']);
+        $user = Auth::user();
+        $user->bio = $request->bio;
+        $user->update();
+        return back()->with('success','Bio updated successfully');
+    }
+
+    public function updateAvatar(Request $request)
+    {
+        $this->validate($request,['image'=>'required']);
+        $file = $request->file('image');
+        //dd($file);
+        $user = Auth::user();
+        $fileName = $user->userName.'.png';
+        if($file)
+        {
+        
+            $file->move(public_path('avatar/'),$fileName);
+            $user->avatar = $fileName;
+            $user->update();
+        }
+
+        return back()->with('success','avatar updated successfully');
+    }
+
+    public function updateCountry(Request $request)
+    {
+        $this->validate($request,['country'=>'required']);
+        $user = Auth::user();
+        $user->country = $request->country;
+        $user->update();
+        return back()->with('success','country updated successfully');
+    }
+
+    public function updateEmail(Request $request)
+    {
+        $user = Auth::user();
+        if($user->email != $request->email)
+        {
+            $this->validate($request,['email'=>'required|unique:users|email']);
+            $user->email = $request->email;
+             $user->update();
+        }
+        return back()->with('success','email updated successfully');
     }
 
     /**

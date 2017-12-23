@@ -31,4 +31,29 @@ class Question extends Model
     {
         return $this->hasMany('App\Favorite');
     }
+
+    public function delete()
+    {
+        //dd( $this->comments()->get());
+        $commentsStack = array();
+        foreach ($this->comments()->get() as $comment) {
+            # code...
+            $comment->votes()->delete();
+            $commentsStack[]= $comment;
+            while(count($commentsStack)>0)
+            {
+                $tmp = array_pop($commentsStack);
+                if($tmp->comments->count()>0)
+                {
+                    $commentsStack = array_merge($commentsStack,$tmp->comments->all());
+                }
+                $tmp->delete();
+
+            }
+            
+        }
+        $this->votes()->delete();
+        $this->favorites()->delete();
+        Parent::delete();
+    }
 }

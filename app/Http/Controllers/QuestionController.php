@@ -66,10 +66,12 @@ class QuestionController extends Controller
     {
         //
         $question = Question::find($id);
-        if($question->user_id != $id)
+
+        if($question->user_id != Auth::id())
         {
             return redirect()->route('question.all.show',$question->slug);
         }
+        
         $question->increment('views');
         $recentQuestions = Question::orderBy('created_at','desc')->take(10)->get();
         return view('questions.show')->with('question',$question)->with('recentQuestions',$recentQuestions);
@@ -136,14 +138,14 @@ class QuestionController extends Controller
         //
         $question = Question::find($id);
         $question->tags()->detach();
-        $question->favorites()->delete();
-        $question->votes()->delete();
+       // $question->favorites()->delete();
+        //$question->votes()->delete();
         //dd($question->comments());
        // Comment::where('commentable_type','App\Question')->where('commentable_id',$id)->delete();
         //$question->comments()->votes()->delete();
         //$question->comments()->comments()->delete();
         //$question->comments()->delete();
-       // $question->delete();
+        $question->delete();
         Session::flash("success","Question deleted successfully");
         return redirect()->back();
     }

@@ -56,7 +56,16 @@ Route::get('favorite/remove/{id}', 'FavoriteController@removeFavorites')->name('
 Route::post('updateName','ProfileController@updateName')->name('updateName');
 Route::post('updateUserName','ProfileController@updateUserName')->name('updateUserName');
 
+Route::post('updateBio','ProfileController@updateBio')->name('updateBio');
+
+Route::post('updateEmail','ProfileController@updateEmail')->name('updateEmail');
+Route::post('updateCountry','ProfileController@updateCountry')->name('updateCountry');
+
+Route::post('updateAvatar','ProfileController@updateAvatar')->name('updateAvatar');
+
 Route::get('users/all/', 'HomeController@getUsers')->name('users');
 
 Route::get('profile/comments/{id}', 'ProfileController@showComments')->name('profile.comments');
 Route::get('profile/favs/{id}', 'ProfileController@showFavs')->name('profile.favs');
+
+Route::get('userImg/{file}', 'HomeController@getAvatar')->name('user.img');

@@ -21,12 +21,15 @@
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 		<div class="user-info back-primary">
-		<img src="{{url('avatar/'.$user->avatar)}}" style="">
+		<img src="{{url('avatar/'.$user->avatar)}}">
+    <a href="#img-modal" data-toggle="modal" ><img src="{{url('img/settings.png')}}" class="img-circle btn-setting"></a>
+
 		<h4>{{$user->name}} <a href="#name-modal" data-toggle="modal" ><img src="{{url('img/settings.png')}}" class="img-circle btn-setting"></a></h4>
         <small class="help-block"><a href="{{route('profile.all.show',$user->userName)}}">{{'@'.$user->userName}}</a> <a href="#username-modal" data-toggle="modal" ><img src="{{url('img/settings.png')}}" class="img-circle btn-setting"></a></small>
-		<p><strong>Bio:</strong>{{$user->bio}}</p>
-		<p>Egypt</p>
-		<p>{{$user->email}}</p>
+		<p><strong>Bio:</strong>{{$user->bio}}
+      <a href="#bio-modal" data-toggle="modal" ><img src="{{url('img/settings.png')}}" class="img-circle btn-setting"></a></p>
+		<p><strong>Country:</strong>{{$user->country}} <a href="#country-modal" data-toggle="modal" ><img src="{{url('img/settings.png')}}" class="img-circle btn-setting"></a></p>
+		<p>{{$user->email}} <a href="#email-modal" data-toggle="modal" ><img src="{{url('img/settings.png')}}" class="img-circle btn-setting"></a></p>
 		<p>join : {{date('M j,Y',strtotime($user->created_at))}}</p>
 		<p>last : {{$user->updated_at->diffForHumans()}}</p>
 		</div>
@@ -100,7 +103,7 @@
 </div>
 
 
-<!-- name modal-->
+<!-- user name modal-->
 <div class="modal fade" role="dialog" id="username-modal">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -128,5 +131,127 @@
         </div>
 		 </div>
 	</div>	
+</div>
+
+
+<!-- bio modal-->
+<div class="modal fade" role="dialog" id="bio-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal">
+            close
+          </button>
+          <strong>Change Bio </strong> 
+        </div>
+        <div class="modal-body">
+        <form action="{{route('updateBio')}}" method="post" id="reply-form">
+          {{csrf_field()}}
+          <div class="row">
+            <div class="col-md-12">
+            <div class="form-group">
+            <input type="text" name="bio" class="form-control" value="{{$user->bio}}"> 
+          </div>
+            </div>
+            <div class="col-md-12">
+            <input type="submit" name="submit" value="save changes" class="btn btn-success btn-block" >
+          </div>
+          </div>
+          
+        </form>
+        </div>
+     </div>
+  </div>  
+</div>
+
+
+<!-- email modal-->
+<div class="modal fade" role="dialog" id="email-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal">
+            close
+          </button>
+          <strong>Change Email </strong> 
+        </div>
+        <div class="modal-body">
+        <form action="{{route('updateEmail')}}" method="post" id="reply-form">
+          {{csrf_field()}}
+          <div class="row">
+            <div class="col-md-12">
+            <div class="form-group">
+            <input type="text" name="email" class="form-control" value="{{$user->email}}"> 
+          </div>
+            </div>
+            <div class="col-md-12">
+            <input type="submit" name="submit" value="save changes" class="btn btn-success btn-block" >
+          </div>
+          </div>
+          
+        </form>
+        </div>
+     </div>
+  </div>  
+</div>
+
+
+<!-- country modal-->
+<div class="modal fade" role="dialog" id="country-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal">
+            close
+          </button>
+          <strong>Change Country </strong> 
+        </div>
+        <div class="modal-body">
+        <form action="{{route('updateCountry')}}" method="post" id="reply-form">
+          {{csrf_field()}}
+          <div class="row">
+            <div class="col-md-12">
+            @include('profile.country');
+            </div>
+            <div class="col-md-12">
+            <input type="submit" name="submit" value="save changes" class="btn btn-success btn-block" >
+          </div>
+          </div>
+          
+        </form>
+        </div>
+     </div>
+  </div>  
+</div>
+
+
+<!-- country modal-->
+<div class="modal fade" role="dialog" id="img-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal">
+            close
+          </button>
+          <strong>Change Avatar </strong> 
+        </div>
+        <div class="modal-body">
+        <form action="{{route('updateAvatar')}}" method="post" id="reply-form" enctype="multipart/form-data">
+          {{csrf_field()}}
+          <div class="row">
+            <div class="col-md-12">
+            <div class="form-group">
+            <input type="file" name="image"> 
+          </div>
+            </div>
+            <div class="col-md-12">
+            <input type="submit" name="submit" value="save changes" class="btn btn-success btn-block" >
+          </div>
+          </div>
+          
+        </form>
+        </div>
+     </div>
+  </div>  
 </div>
 @endsection	
