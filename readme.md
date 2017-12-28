@@ -2,7 +2,7 @@ Discussion Community using laravel 5.5
 
 Demo Application
 ================
-[]
+[demo](https://community-board.000webhostapp.com/)
 
 Community support the following features
 ========================================
@@ -19,7 +19,7 @@ Community support the following features
 
 demo screenshots
 ================
-[demo](https://community-board.000webhostapp.com/)
+[]
 
 finally
 =======	
