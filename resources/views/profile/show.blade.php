@@ -7,7 +7,7 @@
 	<div class="center-block">
 		<div class="alert alert-warning" role="alert">
 			<ul>
-				@foreach($errors as $error)
+				@foreach($errors->all() as $error)
 				<li>{{$error}}</li>
 				@endforeach
 			</ul>
